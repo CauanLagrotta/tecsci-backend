@@ -3508,8 +3508,8 @@ export namespace Prisma {
   export type MetricaGroupByOutputType = {
     id: number
     inversorId: number
-    potenciaAtivaWatt: number
-    temperaturaCelsius: number
+    potenciaAtivaWatt: number | null
+    temperaturaCelsius: number | null
     datetime: Date
     createdAt: Date
     updatedAt: Date
@@ -3596,8 +3596,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       inversorId: number
-      potenciaAtivaWatt: number
-      temperaturaCelsius: number
+      potenciaAtivaWatt: number | null
+      temperaturaCelsius: number | null
       datetime: Date
       createdAt: Date
       updatedAt: Date
@@ -4509,6 +4509,14 @@ export namespace Prisma {
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   /**
    * Field references
    */
@@ -4686,8 +4694,8 @@ export namespace Prisma {
     NOT?: MetricaWhereInput | MetricaWhereInput[]
     id?: IntFilter<"Metrica"> | number
     inversorId?: IntFilter<"Metrica"> | number
-    potenciaAtivaWatt?: FloatFilter<"Metrica"> | number
-    temperaturaCelsius?: FloatFilter<"Metrica"> | number
+    potenciaAtivaWatt?: FloatNullableFilter<"Metrica"> | number | null
+    temperaturaCelsius?: FloatNullableFilter<"Metrica"> | number | null
     datetime?: DateTimeFilter<"Metrica"> | Date | string
     createdAt?: DateTimeFilter<"Metrica"> | Date | string
     updatedAt?: DateTimeFilter<"Metrica"> | Date | string
@@ -4697,8 +4705,8 @@ export namespace Prisma {
   export type MetricaOrderByWithRelationInput = {
     id?: SortOrder
     inversorId?: SortOrder
-    potenciaAtivaWatt?: SortOrder
-    temperaturaCelsius?: SortOrder
+    potenciaAtivaWatt?: SortOrderInput | SortOrder
+    temperaturaCelsius?: SortOrderInput | SortOrder
     datetime?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -4711,8 +4719,8 @@ export namespace Prisma {
     OR?: MetricaWhereInput[]
     NOT?: MetricaWhereInput | MetricaWhereInput[]
     inversorId?: IntFilter<"Metrica"> | number
-    potenciaAtivaWatt?: FloatFilter<"Metrica"> | number
-    temperaturaCelsius?: FloatFilter<"Metrica"> | number
+    potenciaAtivaWatt?: FloatNullableFilter<"Metrica"> | number | null
+    temperaturaCelsius?: FloatNullableFilter<"Metrica"> | number | null
     datetime?: DateTimeFilter<"Metrica"> | Date | string
     createdAt?: DateTimeFilter<"Metrica"> | Date | string
     updatedAt?: DateTimeFilter<"Metrica"> | Date | string
@@ -4722,8 +4730,8 @@ export namespace Prisma {
   export type MetricaOrderByWithAggregationInput = {
     id?: SortOrder
     inversorId?: SortOrder
-    potenciaAtivaWatt?: SortOrder
-    temperaturaCelsius?: SortOrder
+    potenciaAtivaWatt?: SortOrderInput | SortOrder
+    temperaturaCelsius?: SortOrderInput | SortOrder
     datetime?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -4740,8 +4748,8 @@ export namespace Prisma {
     NOT?: MetricaScalarWhereWithAggregatesInput | MetricaScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Metrica"> | number
     inversorId?: IntWithAggregatesFilter<"Metrica"> | number
-    potenciaAtivaWatt?: FloatWithAggregatesFilter<"Metrica"> | number
-    temperaturaCelsius?: FloatWithAggregatesFilter<"Metrica"> | number
+    potenciaAtivaWatt?: FloatNullableWithAggregatesFilter<"Metrica"> | number | null
+    temperaturaCelsius?: FloatNullableWithAggregatesFilter<"Metrica"> | number | null
     datetime?: DateTimeWithAggregatesFilter<"Metrica"> | Date | string
     createdAt?: DateTimeWithAggregatesFilter<"Metrica"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Metrica"> | Date | string
@@ -4847,8 +4855,8 @@ export namespace Prisma {
   }
 
   export type MetricaCreateInput = {
-    potenciaAtivaWatt: number
-    temperaturaCelsius: number
+    potenciaAtivaWatt?: number | null
+    temperaturaCelsius?: number | null
     datetime: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -4858,16 +4866,16 @@ export namespace Prisma {
   export type MetricaUncheckedCreateInput = {
     id?: number
     inversorId: number
-    potenciaAtivaWatt: number
-    temperaturaCelsius: number
+    potenciaAtivaWatt?: number | null
+    temperaturaCelsius?: number | null
     datetime: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type MetricaUpdateInput = {
-    potenciaAtivaWatt?: FloatFieldUpdateOperationsInput | number
-    temperaturaCelsius?: FloatFieldUpdateOperationsInput | number
+    potenciaAtivaWatt?: NullableFloatFieldUpdateOperationsInput | number | null
+    temperaturaCelsius?: NullableFloatFieldUpdateOperationsInput | number | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4877,8 +4885,8 @@ export namespace Prisma {
   export type MetricaUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     inversorId?: IntFieldUpdateOperationsInput | number
-    potenciaAtivaWatt?: FloatFieldUpdateOperationsInput | number
-    temperaturaCelsius?: FloatFieldUpdateOperationsInput | number
+    potenciaAtivaWatt?: NullableFloatFieldUpdateOperationsInput | number | null
+    temperaturaCelsius?: NullableFloatFieldUpdateOperationsInput | number | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4887,16 +4895,16 @@ export namespace Prisma {
   export type MetricaCreateManyInput = {
     id?: number
     inversorId: number
-    potenciaAtivaWatt: number
-    temperaturaCelsius: number
+    potenciaAtivaWatt?: number | null
+    temperaturaCelsius?: number | null
     datetime: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type MetricaUpdateManyMutationInput = {
-    potenciaAtivaWatt?: FloatFieldUpdateOperationsInput | number
-    temperaturaCelsius?: FloatFieldUpdateOperationsInput | number
+    potenciaAtivaWatt?: NullableFloatFieldUpdateOperationsInput | number | null
+    temperaturaCelsius?: NullableFloatFieldUpdateOperationsInput | number | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4905,8 +4913,8 @@ export namespace Prisma {
   export type MetricaUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     inversorId?: IntFieldUpdateOperationsInput | number
-    potenciaAtivaWatt?: FloatFieldUpdateOperationsInput | number
-    temperaturaCelsius?: FloatFieldUpdateOperationsInput | number
+    potenciaAtivaWatt?: NullableFloatFieldUpdateOperationsInput | number | null
+    temperaturaCelsius?: NullableFloatFieldUpdateOperationsInput | number | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5082,20 +5090,25 @@ export namespace Prisma {
     usinaId?: SortOrder
   }
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type InversorScalarRelationFilter = {
     is?: InversorWhereInput
     isNot?: InversorWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type MetricaCountOrderByAggregateInput = {
@@ -5142,20 +5155,20 @@ export namespace Prisma {
     temperaturaCelsius?: SortOrder
   }
 
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type InversorCreateNestedManyWithoutUsinaInput = {
@@ -5278,8 +5291,8 @@ export namespace Prisma {
     connect?: InversorWhereUniqueInput
   }
 
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
     increment?: number
     decrement?: number
     multiply?: number
@@ -5388,20 +5401,42 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type InversorCreateWithoutUsinaInput = {
@@ -5472,8 +5507,8 @@ export namespace Prisma {
   }
 
   export type MetricaCreateWithoutInversorInput = {
-    potenciaAtivaWatt: number
-    temperaturaCelsius: number
+    potenciaAtivaWatt?: number | null
+    temperaturaCelsius?: number | null
     datetime: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5481,8 +5516,8 @@ export namespace Prisma {
 
   export type MetricaUncheckedCreateWithoutInversorInput = {
     id?: number
-    potenciaAtivaWatt: number
-    temperaturaCelsius: number
+    potenciaAtivaWatt?: number | null
+    temperaturaCelsius?: number | null
     datetime: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5544,8 +5579,8 @@ export namespace Prisma {
     NOT?: MetricaScalarWhereInput | MetricaScalarWhereInput[]
     id?: IntFilter<"Metrica"> | number
     inversorId?: IntFilter<"Metrica"> | number
-    potenciaAtivaWatt?: FloatFilter<"Metrica"> | number
-    temperaturaCelsius?: FloatFilter<"Metrica"> | number
+    potenciaAtivaWatt?: FloatNullableFilter<"Metrica"> | number | null
+    temperaturaCelsius?: FloatNullableFilter<"Metrica"> | number | null
     datetime?: DateTimeFilter<"Metrica"> | Date | string
     createdAt?: DateTimeFilter<"Metrica"> | Date | string
     updatedAt?: DateTimeFilter<"Metrica"> | Date | string
@@ -5620,16 +5655,16 @@ export namespace Prisma {
 
   export type MetricaCreateManyInversorInput = {
     id?: number
-    potenciaAtivaWatt: number
-    temperaturaCelsius: number
+    potenciaAtivaWatt?: number | null
+    temperaturaCelsius?: number | null
     datetime: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type MetricaUpdateWithoutInversorInput = {
-    potenciaAtivaWatt?: FloatFieldUpdateOperationsInput | number
-    temperaturaCelsius?: FloatFieldUpdateOperationsInput | number
+    potenciaAtivaWatt?: NullableFloatFieldUpdateOperationsInput | number | null
+    temperaturaCelsius?: NullableFloatFieldUpdateOperationsInput | number | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5637,8 +5672,8 @@ export namespace Prisma {
 
   export type MetricaUncheckedUpdateWithoutInversorInput = {
     id?: IntFieldUpdateOperationsInput | number
-    potenciaAtivaWatt?: FloatFieldUpdateOperationsInput | number
-    temperaturaCelsius?: FloatFieldUpdateOperationsInput | number
+    potenciaAtivaWatt?: NullableFloatFieldUpdateOperationsInput | number | null
+    temperaturaCelsius?: NullableFloatFieldUpdateOperationsInput | number | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5646,8 +5681,8 @@ export namespace Prisma {
 
   export type MetricaUncheckedUpdateManyWithoutInversorInput = {
     id?: IntFieldUpdateOperationsInput | number
-    potenciaAtivaWatt?: FloatFieldUpdateOperationsInput | number
-    temperaturaCelsius?: FloatFieldUpdateOperationsInput | number
+    potenciaAtivaWatt?: NullableFloatFieldUpdateOperationsInput | number | null
+    temperaturaCelsius?: NullableFloatFieldUpdateOperationsInput | number | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
