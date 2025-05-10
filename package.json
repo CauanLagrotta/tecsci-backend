@@ -1,0 +1,32 @@
+{
+  "name": "tecsci-backend",
+  "version": "1.0.0",
+  "description": "Olá! Este é o segundo estágio do processo seletivo da **TECSCI**.",
+  "main": "src/server.ts",
+  "scripts": {
+    "dev": "tsx watch src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CauanLagrotta/tecsci-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/CauanLagrotta/tecsci-backend/issues"
+  },
+  "homepage": "https://github.com/CauanLagrotta/tecsci-backend#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.17",
+    "prisma": "^6.7.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.7.0",
+    "express": "^5.1.0",
+    "tsx": "^4.19.4"
+  }
+}

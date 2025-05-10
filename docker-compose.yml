@@ -1,0 +1,18 @@
+services:
+  database:
+    image: postgres
+    container_name: tecsci-backend
+    ports:
+      - 5432:5432
+
+    environment:
+      - POSTGRES_USER=tecsci
+      - POSTGRES_PASSWORD=tecsci
+      - POSTGRES_DB=tecsci-database
+
+    volumes:
+      - tecsci-backend-desafio:/var/lib/postgresql/data
+
+volumes:
+  tecsci-backend-desafio:
+    name: tecsci-backend-desafio
