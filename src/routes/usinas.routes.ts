@@ -11,7 +11,7 @@ import {
   searchUsinasQuerySchema,
 } from "../schemas/usinas/get-usinas.schema";
 import { validate } from "../middleware/validate.middleware";
-import { updateUsinaSchema } from "../schemas/usinas/update-usinas.schemas";
+import { updateUsinaSchema } from "../schemas/usinas/update-usinas.schema";
 import { updateUsinaController } from "../controllers/usinas/update-usinas.controller";
 import { deleteUsinasController } from "../controllers/usinas/delete-usinas.controller";
 

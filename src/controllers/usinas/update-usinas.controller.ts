@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { updateUsinaSchema } from "../../schemas/usinas/update-usinas.schemas";
+import { updateUsinaSchema } from "../../schemas/usinas/update-usinas.schema";
 import { updateUsinaService } from "../../services/usinas/update-usinas.service";
 import { formatDate } from "../../utils/format-date";
 

@@ -1,7 +1,7 @@
 import { prisma } from "../../lib/prisma";
 import { CreateUsinaDTO } from "../../schemas/usinas/create-usinas.schema";
 
-export const CreateUsinaService = async (data: CreateUsinaDTO) => {
+export const createUsinaService = async (data: CreateUsinaDTO) => {
   const existingUsina = await prisma.usina.findFirst({
     where: {
       nome: data.nome,

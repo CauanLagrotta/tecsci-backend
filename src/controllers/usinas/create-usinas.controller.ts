@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateUsinaService } from "../../services/usinas/create-usinas.service";
+import { createUsinaService } from "../../services/usinas/create-usinas.service";
 import { createUsinaSchema } from "../../schemas/usinas/create-usinas.schema";
 import { formatDate } from "../../utils/format-date";
 
@@ -11,7 +11,7 @@ export async function createUsinaController(req: Request, res: Response) {
       return;
     }
 
-    const novaUsina = await CreateUsinaService(result.data);
+    const novaUsina = await createUsinaService(result.data);
 
     res.status(201).json({
       data: {
