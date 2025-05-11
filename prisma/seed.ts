@@ -1,7 +1,7 @@
 import { prisma } from "../src/lib/prisma";
 import fs from "fs";
 import path from "path";
-import { metricaSchema } from "../src/schemas/metrica.schema";
+import { metricaSchema } from "../src/schemas/metrica/metrica.schema";
 
 async function main() {
   await prisma.usina.createMany({

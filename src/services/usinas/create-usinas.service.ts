@@ -1,5 +1,5 @@
 import { prisma } from "../../lib/prisma";
-import { CreateUsinaDTO } from "../../schemas/usina.schema";
+import { CreateUsinaDTO } from "../../schemas/usinas/create-usinas.schema";
 
 export const CreateUsinaService = async (data: CreateUsinaDTO) => {
   const existingUsina = await prisma.usina.findFirst({
