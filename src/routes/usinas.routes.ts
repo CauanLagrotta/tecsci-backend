@@ -13,6 +13,7 @@ import {
 import { validate } from "../middleware/validate.middleware";
 import { updateUsinaSchema } from "../schemas/usinas/update-usinas.schemas";
 import { updateUsinaController } from "../controllers/usinas/update-usinas.controller";
+import { deleteUsinasController } from "../controllers/usinas/delete-usinas.controller";
 
 export const usinaRoutes = Router();
 
@@ -39,3 +40,8 @@ usinaRoutes.put(
   validate({ body: updateUsinaSchema }),
   updateUsinaController
 ); // PUT http://localhost:3000/api/usinas/1
+
+usinaRoutes.delete(
+  "/usinas/:id",
+  deleteUsinasController
+); // DELETE http://localhost:3000/api/usinas/1
