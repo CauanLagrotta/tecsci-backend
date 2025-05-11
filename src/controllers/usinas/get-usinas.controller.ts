@@ -1,17 +1,14 @@
 import { Request, Response } from "express";
 import { formatDate } from "../../utils/format-date";
-import { z } from "zod";
 import {
   getUsinasService,
   getUsinasServiceSearch,
 } from "../../services/usinas/get-usinas.service";
 import {
-  getUsinasQuerySchema,
-  searchUsinasQuerySchema,
+  GetUsinasQuery,
+  SearchUsinasQuery
 } from "../../schemas/usinas/get-usinas.schema";
 
-type GetUsinasQuery = z.infer<typeof getUsinasQuerySchema>;
-type SearchUsinasQuery = z.infer<typeof searchUsinasQuerySchema>;
 
 export async function getUsinasController(req: Request, res: Response) {
   try {

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const getUsinasQuerySchema = z.object({
+export const getInversoresQuerySchema = z.object({
   page: z
     .string()
     .optional()
@@ -15,9 +15,4 @@ export const getUsinasQuerySchema = z.object({
     }),
 });
 
-export const searchUsinasQuerySchema = z.object({
-  nome: z.string().min(1, { message: "O nome deve ter ao menos 1 caractere" }),
-});
-
-export type GetUsinasQuery = z.infer<typeof getUsinasQuerySchema>;
-export type SearchUsinasQuery = z.infer<typeof searchUsinasQuerySchema>;
+export type GetInversoresQuery = z.infer<typeof getInversoresQuerySchema>;
