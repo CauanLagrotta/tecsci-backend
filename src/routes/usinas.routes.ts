@@ -4,12 +4,15 @@ import {
   getUsinasController,
   getUsinasControllerSearch,
 } from "../controllers/usinas/get-usinas.controller";
-import { validate } from "../middleware/validate.middleware";
+
 import { createUsinaSchema } from "../schemas/usinas/create-usinas.schema";
 import {
   getUsinasQuerySchema,
   searchUsinasQuerySchema,
 } from "../schemas/usinas/get-usinas.schema";
+import { validate } from "../middleware/validate.middleware";
+import { updateUsinaSchema } from "../schemas/usinas/update-usinas.schemas";
+import { updateUsinaController } from "../controllers/usinas/update-usinas.controller";
 
 export const usinaRoutes = Router();
 
@@ -23,10 +26,16 @@ usinaRoutes.get(
   "/usinas",
   validate({ query: getUsinasQuerySchema }),
   getUsinasController
-); // GET http://localhost:3000/api/usinas
+); // GET http://localhost:3000/api/usinas?page=1&limit=10
 
 usinaRoutes.get(
   "/usinas/search",
   validate({ query: searchUsinasQuerySchema }),
   getUsinasControllerSearch
-); // GET http://localhost:3000/api/usinas/search
+); // GET http://localhost:3000/api/usinas/search?nome=Usina%203 (buscando: Usina 3)
+
+usinaRoutes.put(
+  "/usinas/:id",
+  validate({ body: updateUsinaSchema }),
+  updateUsinaController
+); // PUT http://localhost:3000/api/usinas/1
