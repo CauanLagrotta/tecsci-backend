@@ -1,13 +1,14 @@
 import { Router } from "express";
 import { createInversorController } from "../controllers/inversores/create-inversores.controller";
 import { getInversoresController } from "../controllers/inversores/get-inversores.controller";
+import { updateInversorController } from "../controllers/inversores/update-inversores.controller";
+import { deleteInversorController } from "../controllers/inversores/delete-inversores.controller";
 
 import { createInversorSchema } from "../schemas/inversores/create-inversores.schema";
+import { updateInversorSchema } from "../schemas/inversores/update-inversores.schema";
 import { getInversoresQuerySchema } from "../schemas/inversores/get-inversores.schema";
 
 import { validate } from "../middleware/validate.middleware";
-import { updateInversorSchema } from "../schemas/inversores/update-inversores.schema";
-import { updateInversorController } from "../controllers/inversores/update-inversores.controller";
 
 export const inversorRoutes = Router();
 
@@ -28,3 +29,8 @@ inversorRoutes.put(
   validate({ body: updateInversorSchema }),
   updateInversorController
 ); // PUT http://localhost:3000/api/inversores/17
+
+inversorRoutes.delete(
+  "/inversores/:id",
+  deleteInversorController
+); // DELETE http://localhost:3000/api/inversores/1
