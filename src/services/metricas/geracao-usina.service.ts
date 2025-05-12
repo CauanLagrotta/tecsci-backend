@@ -1,8 +1,8 @@
 import { prisma } from "../../lib/prisma";
-import { calcInvertersGeneration } from "../../utils/calcInvesoresGeracao";
-import { GeracaoUsinaDTO } from "../../schemas/metricas/geracao-usina.schema";
+import { calcInversoresGeracao } from "../../utils/calcInvesoresGeracao";
+import { GeracaoUsinaQuery } from "../../schemas/metricas/geracao-usina.schema";
 
-export const geracaoUsinaService = async (params: GeracaoUsinaDTO) => {
+export const geracaoUsinaService = async (params: GeracaoUsinaQuery) => {
   const { usina_id, data_inicio, data_fim } = params;
 
   const inversores = await prisma.inversor.findMany({
@@ -21,7 +21,7 @@ export const geracaoUsinaService = async (params: GeracaoUsinaDTO) => {
 });
 
 
-  const generation = calcInvertersGeneration(
+  const generation = calcInversoresGeracao(
     inversores.map((inv) => ({
       power: inv.metricas.map((m) => ({
         value: m.potenciaAtivaWatt ?? 0,

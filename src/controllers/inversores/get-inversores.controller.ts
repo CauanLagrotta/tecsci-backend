@@ -3,7 +3,6 @@ import { formatDate } from "../../utils/format-date";
 import { getInversoresService } from "../../services/inversores/get-inversores.service";
 import {
   GetInversoresQuery,
-  getInversoresQuerySchema,
 } from "../../schemas/inversores/get-inversores.schema";
 
 export async function getInversoresController(req: Request, res: Response) {

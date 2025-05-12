@@ -1,9 +1,9 @@
 import { prisma } from "../../lib/prisma";
-import { geracaoInversoresDTO } from "../../schemas/metricas/geracao-inversores.schema";
-import { calcInvertersGeneration } from "../../utils/calcInvesoresGeracao";
+import { geracaoInversoresQuery } from "../../schemas/metricas/geracao-inversores.schema";
+import { calcInversoresGeracao } from "../../utils/calcInvesoresGeracao";
 
 export const geracaoInversoresService = async (
-  params: geracaoInversoresDTO
+  params: geracaoInversoresQuery
 ) => {
   const { inversor_id, data_inicio, data_fim } = params;
 
@@ -21,7 +21,7 @@ export const geracaoInversoresService = async (
     orderBy: { datetime: "asc" },
   });
 
-  const generation = calcInvertersGeneration([
+  const generation = calcInversoresGeracao([
     {
       power: metricas.map((m) => ({
         value: m.potenciaAtivaWatt ?? 0,

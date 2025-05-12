@@ -10,4 +10,4 @@ export const geracaoUsinaSchema = z.object({
   }),
 });
 
-export type GeracaoUsinaDTO = z.infer<typeof geracaoUsinaSchema>;
+export type GeracaoUsinaQuery = z.infer<typeof geracaoUsinaSchema>;

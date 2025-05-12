@@ -1,8 +1,8 @@
 import { prisma } from "../../lib/prisma";
-import { temperaturaMediaPorDiaDTO } from "../../schemas/metricas/temperatura-media-por-dia.schema";
+import { temperaturaMediaPorDiaQuery } from "../../schemas/metricas/temperatura-media-por-dia.schema";
 
 export const temperaturaMediaPorDiaService = async (
-  params: temperaturaMediaPorDiaDTO
+  params: temperaturaMediaPorDiaQuery
 ) => {
   const { inversor_id, data_inicio, data_fim } = params;
 

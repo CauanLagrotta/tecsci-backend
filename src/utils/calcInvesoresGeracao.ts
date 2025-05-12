@@ -7,7 +7,7 @@ interface EntityWithPower {
   power: TimeseriesValue[];
 }
 
-export function calcInvertersGeneration(entitiesWithPower: EntityWithPower[]): number {
+export function calcInversoresGeracao(entitiesWithPower: EntityWithPower[]): number {
   if (!entitiesWithPower || entitiesWithPower.length === 0) {
     return 0;
   }

@@ -3,7 +3,7 @@ import { updateInversorSchema } from "../../schemas/inversores/update-inversores
 import { updateInversorService } from "../../services/inversores/update-inversores.service";
 import { formatDate } from "../../utils/format-date";
 
-export const updateInversorController = async (req: Request, res: Response) => {
+export async function updateInversorController(req: Request, res: Response) {
   try {
     const result = updateInversorSchema.safeParse(req.body);
     if (!result.success) {
@@ -31,4 +31,4 @@ export const updateInversorController = async (req: Request, res: Response) => {
     }
     res.status(500).json({ message: "Erro desconhecido" });
   }
-};
+}

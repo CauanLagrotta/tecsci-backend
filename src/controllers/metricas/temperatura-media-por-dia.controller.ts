@@ -6,14 +6,19 @@ export async function temperaturaMediaPorDiaController(
   req: Request,
   res: Response
 ) {
-  const parsed = temperaturaMediaPorDiaSchema.safeParse(req.query);
+  try {
+    const parsed = temperaturaMediaPorDiaSchema.safeParse(req.query);
 
-  if (!parsed.success) {
-    res.status(400).json({ errors: parsed.error.format() });
+    if (!parsed.success) {
+      res.status(400).json({ errors: parsed.error.format() });
+      return;
+    }
+
+    const result = await temperaturaMediaPorDiaService(parsed.data);
+    res.status(200).json(result);
+
+  } catch (error) {
+    res.status(500).json({ message: "Erro interno do servidor" });
     return;
   }
-
-  const result = await temperaturaMediaPorDiaService(parsed.data);
-  res.status(200).json(result);
-  return;
 }
