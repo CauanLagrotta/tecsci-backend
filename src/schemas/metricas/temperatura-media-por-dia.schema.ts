@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const maxPowerPerDaySchema = z.object({
+export const temperaturaMediaPorDiaSchema = z.object({
   inversor_id: z.coerce.number(),
   data_inicio: z.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Data de início inválida",
@@ -10,4 +10,4 @@ export const maxPowerPerDaySchema = z.object({
   }),
 });
 
-export type MaxPowerPerDayDTO = z.infer<typeof maxPowerPerDaySchema>;
+export type temperaturaMediaPorDiaDTO = z.infer<typeof temperaturaMediaPorDiaSchema>;
