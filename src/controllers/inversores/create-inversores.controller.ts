@@ -12,6 +12,7 @@ export async function createInversorController(req: Request, res: Response) {
 
     const inversor = await createInversorService(result.data);
     res.status(201).json({ data: inversor });
+    return
 
   } catch (error) {
     if (error instanceof Error) {

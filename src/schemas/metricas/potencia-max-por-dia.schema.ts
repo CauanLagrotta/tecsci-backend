@@ -10,4 +10,4 @@ export const potenciaMaxPorDiaSchema = z.object({
   }),
 });
 
-export type potenciaMaxPorDiaQuery = z.infer<typeof potenciaMaxPorDiaSchema>;
+export type PotenciaMaxPorDiaQuery = z.infer<typeof potenciaMaxPorDiaSchema>;

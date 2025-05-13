@@ -1,7 +1,7 @@
 import { prisma } from "../../lib/prisma";
-import { potenciaMaxPorDiaQuery } from "../../schemas/metricas/potencia-max-por-dia.schema";
+import { PotenciaMaxPorDiaQuery } from "../../schemas/metricas/potencia-max-por-dia.schema";
 
-export const potenciaMaxPorDiaService = async (params: potenciaMaxPorDiaQuery) => {
+export const potenciaMaxPorDiaService = async (params: PotenciaMaxPorDiaQuery) => {
   const { inversor_id, data_inicio, data_fim } = params;
 
   const result = await prisma.metrica.groupBy({

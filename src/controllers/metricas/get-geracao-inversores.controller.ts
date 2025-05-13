@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { geracaoInversoresSchema } from "../../schemas/metricas/geracao-inversores.schema";
-import { geracaoInversoresService } from "../../services/metricas/geracao-inversores.service";
+import { geracaoInversoresService } from "../../services/metricas/get-geracao-inversores.service";
 
 export async function geracaoInversoresController(req: Request, res: Response) {
   try {

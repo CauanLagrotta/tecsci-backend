@@ -1,19 +1,16 @@
 import { Router } from "express";
-import { createUsinaController } from "../controllers/usinas/create-usinas.controller";
-import {
-  getUsinasController,
-  getUsinasControllerSearch,
-} from "../controllers/usinas/get-usinas.controller";
 
-import { createUsinaSchema } from "../schemas/usinas/create-usinas.schema";
-import {
-  getUsinasQuerySchema,
-  searchUsinasQuerySchema,
-} from "../schemas/usinas/get-usinas.schema";
 import { validate } from "../middleware/validate.middleware";
-import { updateUsinaSchema } from "../schemas/usinas/update-usinas.schema";
+
+import { createUsinaController } from "../controllers/usinas/create-usinas.controller";
+import { getUsinasController, getUsinasControllerSearch } from "../controllers/usinas/get-usinas.controller";
 import { updateUsinaController } from "../controllers/usinas/update-usinas.controller";
 import { deleteUsinasController } from "../controllers/usinas/delete-usinas.controller";
+
+import { createUsinaSchema } from "../schemas/usinas/create-usinas.schema";
+import { getUsinasQuerySchema, getSearchUsinasQuerySchema } from "../schemas/usinas/get-usinas.schema";
+import { updateUsinaSchema } from "../schemas/usinas/update-usinas.schema";
+
 
 export const usinaRoutes = Router();
 
@@ -31,7 +28,7 @@ usinaRoutes.get(
 
 usinaRoutes.get(
   "/usinas/search",
-  validate({ query: searchUsinasQuerySchema }),
+  validate({ query: getSearchUsinasQuerySchema }),
   getUsinasControllerSearch
 ); // GET http://localhost:3000/api/usinas/search?nome=Usina%203 (buscando: Usina 3)
 

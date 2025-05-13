@@ -5,14 +5,10 @@ export const getInversoresService = async (
   limit: number = 5
 ) => {
   try {
-    const skip = (page - 1) * limit;
-
     const inversores = await prisma.inversor.findMany({
-      skip: skip,
+      skip: (page - 1) * limit,
       take: limit,
-      orderBy: {
-        createdAt: "asc", // Ordenando por data de criação em ordem crescente
-      },
+      orderBy: [{ createdAt: "asc" }, { id: "asc" }],
     });
 
     const totalInversores = await prisma.inversor.count();

@@ -15,9 +15,9 @@ export const getUsinasQuerySchema = z.object({
     }),
 });
 
-export const searchUsinasQuerySchema = z.object({
+export const getSearchUsinasQuerySchema = z.object({
   nome: z.string().min(1, { message: "O nome deve ter ao menos 1 caractere" }),
 });
 
 export type GetUsinasQuery = z.infer<typeof getUsinasQuerySchema>;
-export type SearchUsinasQuery = z.infer<typeof searchUsinasQuerySchema>;
+export type GetSearchUsinasQuery = z.infer<typeof getSearchUsinasQuerySchema>;

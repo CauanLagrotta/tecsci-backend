@@ -5,7 +5,7 @@ export const updateInversorService = async (
   id: number,
   data: UpdateInversorDTO
 ) => {
-  const existingInversor = await prisma.inversor.findFirst({
+  const existingInversor = await prisma.inversor.findUnique({
     where: { id },
   });
 

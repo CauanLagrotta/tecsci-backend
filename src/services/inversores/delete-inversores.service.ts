@@ -1,7 +1,7 @@
 import { prisma } from "../../lib/prisma";
 
 export const deleteInversoresService = async (id: number) => {
-  const existingInversor = await prisma.inversor.findFirst({
+  const existingInversor = await prisma.inversor.findUnique({
     where: { id },
   });
 

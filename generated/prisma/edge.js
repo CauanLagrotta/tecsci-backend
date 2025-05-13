@@ -176,11 +176,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://tecsci:tecsci@localhost:5432/tecsci-database?schema=public"
+        "value": null
       }
     }
   },

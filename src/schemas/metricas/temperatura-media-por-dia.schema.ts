@@ -10,4 +10,4 @@ export const temperaturaMediaPorDiaSchema = z.object({
   }),
 });
 
-export type temperaturaMediaPorDiaQuery = z.infer<typeof temperaturaMediaPorDiaSchema>;
+export type TemperaturaMediaPorDiaQuery = z.infer<typeof temperaturaMediaPorDiaSchema>;

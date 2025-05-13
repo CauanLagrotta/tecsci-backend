@@ -1,9 +1,9 @@
 import { prisma } from "../../lib/prisma";
-import { geracaoInversoresQuery } from "../../schemas/metricas/geracao-inversores.schema";
+import { GeracaoInversoresQuery } from "../../schemas/metricas/geracao-inversores.schema";
 import { calcInversoresGeracao } from "../../utils/calcInvesoresGeracao";
 
 export const geracaoInversoresService = async (
-  params: geracaoInversoresQuery
+  params: GeracaoInversoresQuery
 ) => {
   const { inversor_id, data_inicio, data_fim } = params;
 

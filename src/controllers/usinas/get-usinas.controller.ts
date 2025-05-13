@@ -6,7 +6,7 @@ import {
 } from "../../services/usinas/get-usinas.service";
 import {
   GetUsinasQuery,
-  SearchUsinasQuery
+  GetSearchUsinasQuery
 } from "../../schemas/usinas/get-usinas.schema";
 
 
@@ -47,7 +47,7 @@ export async function getUsinasController(req: Request, res: Response) {
 
 export async function getUsinasControllerSearch(req: Request, res: Response) {
   try {
-    const { nome } = req.validatedQuery as SearchUsinasQuery;
+    const { nome } = req.validatedQuery as GetSearchUsinasQuery;
 
     const usinas = await getUsinasServiceSearch(nome);
 

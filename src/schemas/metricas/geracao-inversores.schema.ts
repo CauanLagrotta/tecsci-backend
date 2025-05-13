@@ -10,4 +10,4 @@ export const geracaoInversoresSchema = z.object({
   }),
 });
 
-export type geracaoInversoresQuery = z.infer<typeof geracaoInversoresSchema>;
+export type GeracaoInversoresQuery = z.infer<typeof geracaoInversoresSchema>;

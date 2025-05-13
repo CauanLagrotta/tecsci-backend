@@ -2,10 +2,10 @@ import { Router } from "express";
 
 import { validate } from "../middleware/validate.middleware";
 
-import { potenciaMaxPorDiaController } from "../controllers/metricas/potencia-max-por-dia.controller";
-import { temperaturaMediaPorDiaController } from "../controllers/metricas/temperatura-media-por-dia.controller";
-import { geracaoUsinaController } from "../controllers/metricas/geracao-usina.controller";
-import { geracaoInversoresController } from "../controllers/metricas/geracao-inversores.controller";
+import { potenciaMaxPorDiaController } from "../controllers/metricas/get-potencia-max-por-dia.controller";
+import { temperaturaMediaPorDiaController } from "../controllers/metricas/get-temperatura-media-por-dia.controller";
+import { geracaoUsinaController } from "../controllers/metricas/get-geracao-usina.controller";
+import { geracaoInversoresController } from "../controllers/metricas/get-geracao-inversores.controller";
 
 import { potenciaMaxPorDiaSchema } from "../schemas/metricas/potencia-max-por-dia.schema";
 import { temperaturaMediaPorDiaSchema } from "../schemas/metricas/temperatura-media-por-dia.schema";

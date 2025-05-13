@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { potenciaMaxPorDiaSchema } from "../../schemas/metricas/potencia-max-por-dia.schema";
-import { potenciaMaxPorDiaService } from "../../services/metricas/potencia-max-por-dia.service";
+import { potenciaMaxPorDiaService } from "../../services/metricas/get-potencia-max-por-dia.service";
 
 export async function potenciaMaxPorDiaController(req: Request, res: Response) {
   try {

@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import { geracaoUsinaSchema } from "../../schemas/metricas/geracao-usina.schema";
-import { geracaoUsinaService } from "../../services/metricas/geracao-usina.service";
+import { geracaoUsinaService } from "../../services/metricas/get-geracao-usina.service";
 
 export async function geracaoUsinaController(req: Request, res: Response) {
   try {
