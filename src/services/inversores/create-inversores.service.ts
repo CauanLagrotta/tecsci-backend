@@ -9,14 +9,15 @@ export const createInversorService = async (data: CreateInversorDTO) => {
   });
 
   if (!usinaExists) {
-    throw new Error("Usina nao encontrada");
+    throw new Error("Usina não encontrada");
   }
 
   const newInversor = await prisma.inversor.create({
     data: {
+      nome: data.nome,
       usinaId: data.usinaId,
     },
-  })
+  });
 
-  return newInversor
- }
+  return newInversor;
+};

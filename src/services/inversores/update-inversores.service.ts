@@ -17,6 +17,7 @@ export const updateInversorService = async (
     where: { id },
     data: {
       usinaId: data.usinaId,
+      nome: data.nome,
     },
   });
 

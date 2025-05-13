@@ -20,6 +20,7 @@ model Usina {
 
 model Inversor {
   id        Int       @id @default(autoincrement())
+  nome      String?    @unique
   usinaId   Int
   usina     Usina     @relation(fields: [usinaId], references: [id])
   metricas  Metrica[]
@@ -31,14 +32,13 @@ model Inversor {
 
 model Metrica {
   id                 Int      @id @default(autoincrement())
-  inversorId         Int
-  inversor           Inversor @relation(fields: [inversorId], references: [id])
+  inversorId         Int?
+  inversor           Inversor? @relation(fields: [inversorId], references: [id])
   potenciaAtivaWatt  Float?
   temperaturaCelsius Float?
   datetime           DateTime
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 
-  @@index([inversorId, datetime]) // Índice pra buscas rápidas
   @@map("metrica")
 }

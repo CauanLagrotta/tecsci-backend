@@ -10,27 +10,27 @@ async function main() {
   });
 
   const inversores = [
-    { id: 1, usinaId: 1 },
-    { id: 2, usinaId: 1 },
-    { id: 3, usinaId: 1 },
-    { id: 4, usinaId: 1 },
-    { id: 5, usinaId: 2 },
-    { id: 6, usinaId: 2 },
-    { id: 7, usinaId: 2 },
-    { id: 8, usinaId: 2 },
-  ];
+  { nome: "Inversor 1", usinaId: 1 },
+  { nome: "Inversor 2", usinaId: 1 },
+  { nome: "Inversor 3", usinaId: 1 },
+  { nome: "Inversor 4", usinaId: 1 },
+  { nome: "Inversor 5", usinaId: 2 },
+  { nome: "Inversor 6", usinaId: 2 },
+  { nome: "Inversor 7", usinaId: 2 },
+  { nome: "Inversor 8", usinaId: 2 },
+];
 
   // Criar inversores ou atualizar se existir
   for (const inv of inversores) {
-    await prisma.inversor.upsert({
-      where: { id: inv.id },
-      update: {},
-      create: {
-        id: inv.id,
-        usinaId: inv.usinaId,
-      },
-    });
-  }
+  await prisma.inversor.upsert({
+    where: { nome: inv.nome },
+    update: {},
+    create: {
+      nome: inv.nome,
+      usinaId: inv.usinaId,
+    },
+  });
+}
 
   // Ler metricas e processar
   const filePath = path.join(__dirname, "../sample/metrics.json");

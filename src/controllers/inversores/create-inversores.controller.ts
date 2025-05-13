@@ -12,18 +12,16 @@ export async function createInversorController(req: Request, res: Response) {
 
     const inversor = await createInversorService(result.data);
     res.status(201).json({ data: inversor });
-    return
-
+    return;
   } catch (error) {
     if (error instanceof Error) {
-        
-      if (error.message === "Usina nao encontrada") {
-        res.status(404).json({ message: error.message });
-        return;
+      if (error.message === "Usina não encontrada") {
+        res.status(400).json({ message: error.message });
+      } else {
+        res.status(500).json({ message: "Erro interno" });
       }
+    } else {
+      res.status(500).json({ message: "Erro desconhecido" });
     }
-
-    res.status(500).json({ message: "Erro interno do servidor" });
-    return;
   }
 }

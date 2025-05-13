@@ -5,13 +5,14 @@ import { formatDate } from "../../utils/format-date";
 
 export async function updateInversorController(req: Request, res: Response) {
   try {
+    const { id } = req.params;
+
     const result = updateInversorSchema.safeParse(req.body);
     if (!result.success) {
       res.status(400).json({ errors: result.error.format() });
       return;
     }
 
-    const { id } = req.params;
     const numericId = parseInt(id);
 
     const inversor = await updateInversorService(numericId, result.data);
