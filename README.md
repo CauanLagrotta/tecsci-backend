@@ -1,74 +1,130 @@
-## Desafio Backend
+# ⚡ TecSci Backend - Monitoramento de Usinas Fotovoltaicas
 
-Olá! Este é o segundo estágio do processo seletivo da **TECSCI**.
+Este projeto é parte do processo seletivo da TECSCI e tem como objetivo fornecer uma API para ingestão, armazenamento e análise de dados operacionais de usinas fotovoltaicas.
 
-Você deverá desenvolver um protótipo de **API para monitoramento de usinas fotovoltaicas**, utilizando **Python** ou **TypeScript**, à sua escolha.
+## 📋 Tecnologias Utilizadas
 
-### Objetivos do Sistema
+- Node.js + TypeScript
+- Express (API REST)
+- Prisma ORM
+- PostgreSQL (via Docker)
+- Zod (validação de dados)
+- Docker Compose
 
-* Ingerir, armazenar e validar dados operacionais de geração de energia provenientes de fontes externas.
-* Persistir os dados em um banco de dados.
-* Fornecer insights operacionais simples com base nos dados.
+## 📁 Estrutura do Projeto
 
+```bash
+📁 tecsci-backend
+├── 📁 prisma            # Schema e seed do banco de dados
+├── 📁 sample            # Arquivo de métricas simuladas (JSON)
+├── 📁 src
+│   ├── 📁 controllers   # Camada de controllers (Express)
+│   ├── 📁 services      # Regras de negócio
+│   ├── 📁 routes        # Rotas REST
+│   ├── 📁 schemas       # DTOs e validações (Zod)
+│   ├── 📁 utils         # Funções auxiliares (ex: cálculo de geração)
+│   └── server.ts       # Ponto de entrada da API
+├── docker-compose.yml
+└── README.md
+```
 
-| O que será avaliado                                                                                      |
-| -------------------------------------------------------------------------------------------------------- |
-| Organização do projeto, controle de versão, uso de README, separação clara por domínio e finalidade.     |
-| Clareza na separação entre estruturas relacionais e documentais. |
-| Recebimento de dados externos, uso de DTOs para validação, tratamento de erros.                          |
-| API REST com filtros e parâmetros, documentação, uso correto dos verbos e códigos HTTP.                  |
-| Agregações como total, média, pico, agrupamentos por data/usina.                                         |
+## 🚀 Como rodar o projeto
+**1. Clone o repositório**
+```bash
+git clone https://github.com/CauanLagrotta/tecsci-backend.git
+cd tecsci-backend
+```
 
-> O sistema não precisa ser completo nem "pronto para produção". O mais importante é demonstrar clareza na arquitetura, decisões justificadas, e domínio das competências envolvidas.
+**2. Instale as dependencias**
+```bash
+npm install
+```
 
-## Dados de Entrada
+**3. Configure o ambiente**
+Crie o arquivo .env com a seguinte variável:
+```bash
+DATABASE_URL="postgresql://tecsci:tecsci@localhost:5432/tecsci-database?schema=public"
+```
 
-- Será fornecido um **arquivo JSON de exemplo** com registros simulando a produção de energia em usinas fotovoltaicas.
-  - A aplicação deverá ser capaz de **ingerir, armazenar e processar esse arquivo**.
-  - Fique à vontade para gerar dados adicionais, se necessário, para testar agregações, filtros e desempenho.
-- Os dados consistem em uma lista contendo registros de leitura dos inversores. Esses inversores estão distribuídos entre duas usinas:
-  - Os inversores de **ID 1 a 4** pertencem à **Usina 1.**
-  - Os inversores de **ID 5 a** 8 pertencem à **Usina 2**.
+**4. Suba o banco com docker**
+```bash
+docker-compose up -d
+```
 
-## Contexto
+**5. Rode as migrations**
+```bash
+npx prisma migrate dev
+npx prisma generate
+```
 
-- **Inversores**: Equipamentos utilizados em usinas fotovoltaicas para converter corrente contínua (CC) em corrente alternada (CA). Esses dispositivos também fornecem dados operacionais, como a potência ativa.
-- **Potência ativa**: Valor instantâneo, medido em Watts (W), que representa a quantidade de energia que o inversor está entregando em um determinado momento.
-- **Geração**: Quantidade total de energia gerada, obtida por meio da integral da potência ativa ao longo do tempo.
+**6. Popule o banco de dados**
+```bash
+npm run seed
+```
 
-## Código auxiliar
+**7. Rode o projeto**
+```bash
+npm run dev
+```
 
-Disponibilizamos um repositório com código que pode ser utilizado como apoio para o cálculo da geração (isto é, a integral da potência ativa) e o arquivo "[metrics.json](/sample/metrics.json)" com os registros:
+## 🧪 Endpoints disponíveis:
+### 📌 CRUD - Usinas
+- POST /usinas
+- GET /usinas
+- PUT /usinas/:id
+- DELETE /usinas/:id
 
-## Endpoints obrigatórias
+### ⚙️ CRUD - Inversores
+- POST /inversores
+- GET /inversores
+- PUT /inversores/:id 
+- DELETE /inversores/:id
 
-- CRUD de Usinas
-- CRUD de Inversores
-- Potência máxima por dia.
-  - **Parâmetros:**
-    - `inversor_id`
-    - `data_inicio`, `data_fim`
-- Média da temperatura por dia
-  - **Parâmetros:**
-    - `inversor_id`
-    - `data_inicio`, `data_fim`
-- Geração da usina por range de data.
-  - **Parâmetros:**
-    - `usina_id`
-    - `data_inicio`, `data_fim`
-- Geração do inversor por range de data.
-  - **Parâmetros:**
-    - `inversor_id`
-    - `data_inicio`, `data_fim`
+### 📊 Métricas Operacionais**
+**🔹 Potência máxima por dia**
+- GET /metricas/potencia-maxima
+- Parâmetros: inversor_id, data_inicio, data_fim
 
-      
-## Entrega
+**🔹 Temperatura média por dia**
+- GET /metricas/temperatura-media
+- Parâmetros: inversor_id, data_inicio, data_fim
 
-* A entrega deve ser feita por meio de um repositório público (GitHub, GitLab, etc.).
-* O repositório deve conter:
+**🔹 Geração da usina por período**
+- GET /metricas/geracao-usina
+- Parâmetros: usina_id, data_inicio, data_fim
 
-  * Código-fonte completo.
-  * Um método para popular o banco de dados com os dados do arquivo `metrics.json` (ou instância já populada).
-  * Instruções claras de instalação e execução local.
-* Prazo de entrega: **até 14/05 às 23:59**.
-* [Formulário de envio](https://forms.office.com/r/8RxwWJ69b4)
+**🔹 Geração do inversor por período**
+- GET /metricas/geracao-inversores
+- Parâmetros: inversor_id, data_inicio, data_fim
+
+## 📥 Ingestão de Dados
+O projeto consome o arquivo metrics.json localizado em /sample, contendo registros de leitura de inversores com as seguintes informações:
+
+```json
+{
+  "inversor_id": 1,
+  "potencia_ativa_watt": 5000,
+  "temperatura_celsius": 40.5,
+  "datetime": {
+    "$date": "2023-01-01T12:00:00Z"
+  }
+}
+```
+
+A ingestão é feita via script:
+```bash
+npm run seed
+```
+
+## ✅ Boas práticas aplicadas
+- Separação de camadas: controllers, services, schemas e utils
+
+- DTOs com validação usando Zod
+
+- Arquitetura escalável e modular
+
+- Tratamento de erros com mensagens claras
+
+- Uso correto dos verbos HTTP e códigos de status
+
+- Docker para facilitar o setup local
