@@ -80,7 +80,7 @@ npm run dev
 - PUT /inversores/:id 
 - DELETE /inversores/:id
 
-### 📊 Métricas Operacionais**
+### 📊 Métricas Operacionais
 **🔹 Potência máxima por dia**
 - GET /metricas/potencia-maxima
 - Parâmetros: inversor_id, data_inicio, data_fim
